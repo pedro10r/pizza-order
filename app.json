@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "pizza-order",
+    "slug": "pizza-order",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
