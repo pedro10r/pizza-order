@@ -8,6 +8,8 @@ import { ThemeProvider } from 'styled-components/native';
 
 import theme from './src/theme';
 
+import { AuthProvider } from './src/hooks/auth';
+
 import { SignIn } from '@screens/SignIn';
 
 export default function App() {
@@ -24,7 +26,9 @@ export default function App() {
         backgroundColor='transparent'
         translucent
       />
-      {fontsLoaded && <SignIn />}
+      <AuthProvider>
+        {fontsLoaded && <SignIn />}
+      </AuthProvider>
     </ThemeProvider>
   );
 }

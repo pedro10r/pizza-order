@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "325912776540",
+    "project_id": "pizza-order-3c5bf",
+    "storage_bucket": "pizza-order-3c5bf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:325912776540:android:38f2a8fd850b77acaebb99",
+        "android_client_info": {
+          "package_name": "com.pizzaorder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "325912776540-1vntr2jsecampbt47nbddmeljatt9km1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVGDTr-WNsyCtqLQgLW16db7Eb6kWupeo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "325912776540-1vntr2jsecampbt47nbddmeljatt9km1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
