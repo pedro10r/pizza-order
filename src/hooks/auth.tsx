@@ -1,19 +1,32 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import { Alert } from "react-native";
 import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+type User = {
+  id: string;
+  name: string;
+  isAdmin: boolean;
+}
 
 type AuthContextData = {
   signIn: (email: string, password: string) => Promise<void>;
+  signOut: () => Promise<void>;
   isLogging: boolean;
+  user: User | null;
 }
 
 type AuthProviderProps = {
   children: React.ReactNode;
 }
 
+const USER_COLLECTION = '@pizzaorder:users';
+
 export const AuthContext = createContext({} as AuthContextData);
 
 function AuthProvider({ children }: AuthProviderProps) {
+  const [user, setUser] = useState<User | null>(null);
   const [isLogging, setIsLogging] = useState(false);
 
   async function signIn(email: string, password: string) {
@@ -26,7 +39,27 @@ function AuthProvider({ children }: AuthProviderProps) {
     auth()
       .signInWithEmailAndPassword(email, password)
       .then((account) => {
-        console.log(account);
+        firestore()
+          .collection('users')
+          .doc(account.user.uid)
+          .get()
+          .then(async (profile) => {
+            const { name, isAdmin } = profile.data() as User;
+
+            if (profile.exists) {
+              const userData = {
+                id: account.user.uid,
+                name,
+                isAdmin
+              }
+
+              await AsyncStorage.setItem(USER_COLLECTION, JSON.stringify(userData));
+              setUser(userData);
+            }
+          })
+          .catch(() => {
+            Alert.alert('Login', 'Não foi possível buscar os dados de perfil do usuário.')
+          })
       })
       .catch((error) => {
         const { code } = error;
@@ -42,10 +75,36 @@ function AuthProvider({ children }: AuthProviderProps) {
       })
   }
 
+  async function loadUserStorageData() {
+    setIsLogging(true);
+
+    const storedData = await AsyncStorage.getItem(USER_COLLECTION);
+
+    if (storedData) {
+      const userData = JSON.parse(storedData);
+      console.log(userData);
+      setUser(userData);
+    }
+
+    setIsLogging(false);
+  }
+
+  async function signOut() {
+    await auth().signOut();
+    await AsyncStorage.removeItem(USER_COLLECTION);
+    setUser(null);
+  }
+
+  useEffect(() => {
+    loadUserStorageData();
+  }, []);
+
   return (
     <AuthContext.Provider value={{
       signIn,
+      signOut,
       isLogging,
+      user,
     }}>
       {children}
     </AuthContext.Provider>
