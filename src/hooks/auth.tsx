@@ -13,6 +13,7 @@ type User = {
 type AuthContextData = {
   signIn: (email: string, password: string) => Promise<void>;
   signOut: () => Promise<void>;
+  forgotPassword: (email: string) => Promise<void>;
   isLogging: boolean;
   user: User | null;
 }
@@ -95,16 +96,32 @@ function AuthProvider({ children }: AuthProviderProps) {
     setUser(null);
   }
 
+  async function forgotPassword(email: string) {
+    if (!email) {
+      return Alert.alert('Redefinir senha', 'Informe o e-mail.')
+    }
+
+    auth()
+      .sendPasswordResetEmail(email)
+      .then(() => {
+        Alert.alert('Redefinir senaha', 'Enviamos um link no seu e-mail para redefinir sua senha.');
+      })
+      .catch(() => {
+        Alert.alert('Redefinir senaha', 'Não foi possível enviar o e-mail para redefinir a senha.');
+      })
+  }
+
   useEffect(() => {
     loadUserStorageData();
   }, []);
 
   return (
     <AuthContext.Provider value={{
+      user,
+      isLogging,
       signIn,
       signOut,
-      isLogging,
-      user,
+      forgotPassword,
     }}>
       {children}
     </AuthContext.Provider>
