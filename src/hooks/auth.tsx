@@ -83,7 +83,6 @@ function AuthProvider({ children }: AuthProviderProps) {
 
     if (storedData) {
       const userData = JSON.parse(storedData);
-      console.log(userData);
       setUser(userData);
     }
 

@@ -6,7 +6,7 @@ type Props = TextInputProps & {
   type?: TypeProps;
 }
 
-export function Input({ type, ...rest }: Props) {
+export function Input({ type = 'primary', ...rest }: Props) {
   return (
     <Container
       type={type}
