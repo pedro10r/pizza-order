@@ -10,7 +10,7 @@ import theme from './src/theme';
 
 import { AuthProvider } from './src/hooks/auth';
 
-import { SignIn } from '@screens/SignIn';
+import { Product } from '@screens/Product';
 
 export default function App() {
 
@@ -27,7 +27,7 @@ export default function App() {
         translucent
       />
       <AuthProvider>
-        {fontsLoaded && <SignIn />}
+        {fontsLoaded && <Product />}
       </AuthProvider>
     </ThemeProvider>
   );
