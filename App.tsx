@@ -8,9 +8,8 @@ import { ThemeProvider } from 'styled-components/native';
 
 import theme from './src/theme';
 
+import { Routes } from './src/routes';
 import { AuthProvider } from './src/hooks/auth';
-
-import { Home } from '@screens/Home';
 
 export default function App() {
 
@@ -27,7 +26,7 @@ export default function App() {
         translucent
       />
       <AuthProvider>
-        {fontsLoaded && <Home />}
+        {fontsLoaded && <Routes />}
       </AuthProvider>
     </ThemeProvider>
   );
