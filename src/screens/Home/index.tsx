@@ -22,6 +22,7 @@ import {
 
 export function Home() {
   const [pizzas, setPizzas] = useState<ProductProps[]>([]);
+  const [search, setSearch] = useState('');
 
   const { COLORS } = useTheme();
 
@@ -49,6 +50,14 @@ export function Home() {
       })
   }
 
+  function handleSearch() {
+    fetchPizzas(search);
+  }
+  function handleSearchClear() {
+    setSearch('');
+    fetchPizzas('');
+  }
+
   useEffect(() => {
     fetchPizzas('');
   }, []);
@@ -71,8 +80,10 @@ export function Home() {
       </Header>
 
       <Search
-        onSearch={() => { }}
-        onClear={() => { }}
+        onChangeText={setSearch}
+        value={search}
+        onSearch={handleSearch}
+        onClear={handleSearchClear}
       />
 
       <MenuHeader>
