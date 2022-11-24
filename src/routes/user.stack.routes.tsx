@@ -13,7 +13,7 @@ export function UserStackRoutes() {
         component={Home}
       />
       <Screen
-        name='Product'
+        name='product'
         component={Product}
       />
     </Navigator>

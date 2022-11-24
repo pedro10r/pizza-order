@@ -1,14 +1,18 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Platform, TouchableOpacity, ScrollView, Alert } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import firestore from '@react-native-firebase/firestore';
 import storage from '@react-native-firebase/storage';
+
+import { useRoute } from '@react-navigation/native';
+import { ProductNavigationProps } from '../../@types/navigation';
 
 import { ButtonBack } from '@components/ButtonBack';
 import { Photo } from '@components/Photo';
 import { InputPrice } from '@components/InputPrice';
 import { Input } from '@components/Input';
 import { Button } from '@components/Button';
+import { ProductProps } from '@components/ProductCard';
 
 import {
   Container,
@@ -24,6 +28,15 @@ import {
   MaxCharacters,
 } from './styles';
 
+type PizzasResponse = ProductProps & {
+  photo_path: string;
+  prices_sizes: {
+    p: string;
+    m: string;
+    g: string;
+  }
+}
+
 export function Product() {
   const [image, setImage] = useState('');
   const [name, setName] = useState('');
@@ -32,6 +45,10 @@ export function Product() {
   const [priceSizeM, setPriceSizeM] = useState('');
   const [priceSizeG, setPriceSizeG] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [photoPath, setPhotoPath] = useState('');
+
+  const route = useRoute();
+  const id = route.params as ProductNavigationProps;
 
   async function handlePickerImage() {
     const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
@@ -96,6 +113,26 @@ export function Product() {
 
     setIsLoading(false);
   }
+
+  useEffect(() => {
+    if (id) {
+      firestore()
+        .collection('pizzas')
+        .doc(id.id)
+        .get()
+        .then((response) => {
+          const product = response.data() as PizzasResponse;
+
+          setName(product.name);
+          setImage(product.photo_url);
+          setDescription(product.description);
+          setPriceSizeP(product.prices_sizes.p);
+          setPriceSizeM(product.prices_sizes.m);
+          setPriceSizeG(product.prices_sizes.g);
+          setPhotoPath(product.photo_path);
+        })
+    }
+  }, [id])
 
   return (
     <Container behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
