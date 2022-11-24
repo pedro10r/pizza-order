@@ -9,6 +9,7 @@ import { ThemeProvider } from 'styled-components/native';
 import theme from './src/theme';
 
 import { Routes } from './src/routes';
+import { Order } from '@screens/Order';
 import { AuthProvider } from './src/hooks/auth';
 
 export default function App() {
@@ -24,7 +25,7 @@ export default function App() {
         backgroundColor="transparent"
         translucent
       />
-      <AuthProvider>{fontsLoaded && <Routes />}</AuthProvider>
+      <AuthProvider>{fontsLoaded && <Order />}</AuthProvider>
     </ThemeProvider>
   );
 }
