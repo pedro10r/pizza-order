@@ -19,6 +19,7 @@ import {
   MenuHeader,
   Title,
   MenuItemsNumber,
+  NewProductButton,
 } from './styles';
 
 export function Home() {
@@ -64,6 +65,10 @@ export function Home() {
 
   function handleOpen(id: string) {
     navigation.navigate('product', { id });
+  }
+
+  function handleAdd() {
+    navigation.navigate('product');
   }
 
   useEffect(() => {
@@ -114,6 +119,12 @@ export function Home() {
           paddingBottom: 125,
           marginHorizontal: 24,
         }}
+      />
+
+      <NewProductButton
+        title='Cadastrar pizza'
+        type='secondary'
+        onPress={handleAdd}
       />
 
     </Container>
