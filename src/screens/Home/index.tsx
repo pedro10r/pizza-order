@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useState, useCallback } from 'react';
 import { Alert, FlatList, TouchableOpacity } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useTheme } from 'styled-components/native';
 import firestore from '@react-native-firebase/firestore';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useFocusEffect } from '@react-navigation/native';
 
 import happyPng from '@assets/happy.png';
 
@@ -44,14 +44,14 @@ export function Home() {
           return {
             id: doc.id,
             ...doc.data(),
-          }
+          };
         }) as ProductProps[];
 
         setPizzas(data);
       })
       .catch(() => {
-        Alert.alert('Consulta', 'Não foi possível realizar a consulta.')
-      })
+        Alert.alert('Consulta', 'Não foi possível realizar a consulta.');
+      });
   }
 
   function handleSearch() {
@@ -71,9 +71,11 @@ export function Home() {
     navigation.navigate('product');
   }
 
-  useEffect(() => {
-    fetchPizzas('');
-  }, []);
+  useFocusEffect(
+    useCallback(() => {
+      fetchPizzas('');
+    }, [])
+  );
 
   return (
     <Container>
@@ -84,11 +86,7 @@ export function Home() {
         </Greeting>
 
         <TouchableOpacity>
-          <MaterialIcons
-            name='logout'
-            color={COLORS.TITLE}
-            size={24}
-          />
+          <MaterialIcons name="logout" color={COLORS.TITLE} size={24} />
         </TouchableOpacity>
       </Header>
 
@@ -101,17 +99,14 @@ export function Home() {
 
       <MenuHeader>
         <Title>Cardápio</Title>
-        <MenuItemsNumber>10 pizzas</MenuItemsNumber>
+        <MenuItemsNumber>{pizzas.length} pizzas</MenuItemsNumber>
       </MenuHeader>
 
       <FlatList
         data={pizzas}
-        keyExtractor={item => item.id}
+        keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-          <ProductCard
-            data={item}
-            onPress={() => handleOpen(item.id)}
-          />
+          <ProductCard data={item} onPress={() => handleOpen(item.id)} />
         )}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{
@@ -122,11 +117,10 @@ export function Home() {
       />
 
       <NewProductButton
-        title='Cadastrar pizza'
-        type='secondary'
+        title="Cadastrar pizza"
+        type="secondary"
         onPress={handleAdd}
       />
-
     </Container>
   );
 }

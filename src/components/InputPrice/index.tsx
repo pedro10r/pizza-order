@@ -4,7 +4,7 @@ import { Container, Input, Label, Size } from './styles';
 
 type Props = TextInputProps & {
   size: string;
-}
+};
 
 export function InputPrice({ size, ...rest }: Props) {
   return (
@@ -15,7 +15,7 @@ export function InputPrice({ size, ...rest }: Props) {
 
       <Label>R$</Label>
 
-      <Input keyboardType='numeric' {...rest} />
+      <Input keyboardType="numeric" {...rest} />
     </Container>
   );
 }

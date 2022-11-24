@@ -27,7 +27,7 @@ export const Name = styled.Text`
 
   ${({ theme }) => css`
     font-family: ${theme.FONTS.TITLE};
-    color: ${theme.COLORS.SECONDARY_900}
+    color: ${theme.COLORS.SECONDARY_900};
   `}
 `;
 
@@ -43,7 +43,7 @@ export const Description = styled.Text`
 
   ${({ theme }) => css`
     font-family: ${theme.FONTS.TEXT};
-    color: ${theme.COLORS.SECONDARY_400}
+    color: ${theme.COLORS.SECONDARY_400};
   `}
 `;
 

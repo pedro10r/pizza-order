@@ -12,7 +12,6 @@ import { Routes } from './src/routes';
 import { AuthProvider } from './src/hooks/auth';
 
 export default function App() {
-
   const [fontsLoaded] = useFonts({
     DMSans_400Regular,
     DMSerifDisplay_400Regular,
@@ -21,13 +20,11 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <StatusBar
-        barStyle='light-content'
-        backgroundColor='transparent'
+        barStyle="light-content"
+        backgroundColor="transparent"
         translucent
       />
-      <AuthProvider>
-        {fontsLoaded && <Routes />}
-      </AuthProvider>
+      <AuthProvider>{fontsLoaded && <Routes />}</AuthProvider>
     </ThemeProvider>
   );
 }

@@ -10,7 +10,7 @@ import {
   Identification,
   Image,
   Line,
-  Name
+  Name,
 } from './styles';
 
 export type ProductProps = {
@@ -18,11 +18,11 @@ export type ProductProps = {
   photo_url: string;
   name: string;
   description: string;
-}
+};
 
 type Props = RectButtonProps & {
   data: ProductProps;
-}
+};
 
 export function ProductCard({ data, ...rest }: Props) {
   const { COLORS } = useTheme();
@@ -35,7 +35,7 @@ export function ProductCard({ data, ...rest }: Props) {
         <Details>
           <Identification>
             <Name>{data.name}</Name>
-            <Feather name='chevron-right' size={18} color={COLORS.SHAPE} />
+            <Feather name="chevron-right" size={18} color={COLORS.SHAPE} />
           </Identification>
 
           <Description>{data.description}</Description>

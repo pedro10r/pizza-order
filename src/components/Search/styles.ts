@@ -37,7 +37,7 @@ export const Button = styled(RectButton)`
   height: 52px;
   align-items: center;
   justify-content: center;
-  background-color:  ${({ theme }) => theme.COLORS.SUCCESS_900};
+  background-color: ${({ theme }) => theme.COLORS.SUCCESS_900};
   border-radius: 18px;
   margin-left: 7px;
 `;

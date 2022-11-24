@@ -10,7 +10,7 @@ export const Container = styled.KeyboardAvoidingView`
 `;
 
 export const Header = styled(LinearGradient).attrs(({ theme }) => ({
-  colors: theme.COLORS.GRADIENT
+  colors: theme.COLORS.GRADIENT,
 }))`
   width: 100%;
   flex-direction: row;

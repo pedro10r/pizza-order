@@ -9,11 +9,7 @@ export function ButtonBack({ ...rest }: TouchableOpacityProps) {
 
   return (
     <Container {...rest}>
-      <MaterialIcons
-        name='chevron-left'
-        size={18}
-        color={COLORS.TITLE}
-      />
+      <MaterialIcons name="chevron-left" size={18} color={COLORS.TITLE} />
     </Container>
   );
 }
