@@ -6,9 +6,13 @@
 
 Depois de clonar o repo na sua máquina, na pasta do projeto rode: `npm install --force`, depois disso, se estiver no mac rode: `npx pod-install ios` ou `cd ios && pod install && cd ..`.
 
-### Tecnologias:
+#### Tecnologias:
 
 _React Native_ • _Expo_ • _Typescript_ • _React Navigation => Stack e Bottom Tabs_ • _Styled Components_ • _Expo Fonts_ • _Babel Plugin Module Resolver (Para organizar as importações dos arquivos mais usados no projeto)_ • _Contexts e Hooks_ • _Firebase => Authentication; Firestore; Storage_ • _Async Storage_ • *Linear Gradient*...
+
+#### O que foi feito?
+
+Começando pela interface de login, o app faz a autenticação pelo firebase authentication, logIn, logOut e equeci minha senha, além de persistir a autenticação no dispositivo do user com Async Storage. O app tem 2 tipos de users, Admin e Garçom, o Admin pode cadastrar as pizzas e ver a lista de cadastro e a navegação é em stack, na interface do Garçom ele poderá anotar o pedido das mesas podendo acompanhar o status do pedido e conta com os 2 tipos de navegação, stack e bottom tabs. A bottom tab é totalmente personalizada.
 
 #### Screenshots
 
