@@ -5,7 +5,7 @@ import { Button } from '@components/Button';
 import { Input } from '@components/Input';
 
 import brandImg from '@assets/brand.png';
-import { useAuth } from '../../hooks/auth';
+import { useAuth } from '@hooks/auth';
 
 import {
   Container,
