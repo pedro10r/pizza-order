@@ -13,11 +13,11 @@ _React Native_ • _Expo_ • _Typescript_ • _React Navigation => Stack e Bott
 #### Screenshots
 
 <div>
-  <img align="center" alt="1" height="360em" width="180em" src="https://github.com/pedro10r/pizza-order/blob/main/src/assets/screenshots/login.png">
-  <img align="center" alt="1" height="360em" width="180em" src="https://github.com/pedro10r/pizza-order/blob/main/src/assets/screenshots/admin_1.png">
-  <img align="center" alt="1" height="360em" width="180em" src="https://github.com/pedro10r/pizza-order/blob/main/src/assets/screenshots/admin_2.png">
-  <img align="center" alt="1" height="360em" width="180em" src="https://github.com/pedro10r/pizza-order/blob/main/src/assets/screenshots/admin_3.png">
-  <img align="center" alt="1" height="360em" width="180em" src="https://github.com/pedro10r/pizza-order/blob/main/src/assets/screenshots/waiter_1.png">
-  <img align="center" alt="1" height="360em" width="180em" src="https://github.com/pedro10r/pizza-order/blob/main/src/assets/screenshots/search.png">
-  <img align="center" alt="1" height="360em" width="180em" src="https://github.com/pedro10r/pizza-order/blob/main/src/assets/screenshots/waiter_2.png">
+  <img align="center" alt="1" height="380em" width="180em" src="https://github.com/pedro10r/pizza-order/blob/main/src/assets/screenshots/login.png">
+  <img align="center" alt="1" height="380em" width="180em" src="https://github.com/pedro10r/pizza-order/blob/main/src/assets/screenshots/admin_1.png">
+  <img align="center" alt="1" height="380em" width="180em" src="https://github.com/pedro10r/pizza-order/blob/main/src/assets/screenshots/admin_2.png">
+  <img align="center" alt="1" height="380em" width="180em" src="https://github.com/pedro10r/pizza-order/blob/main/src/assets/screenshots/admin_3.png">
+  <img align="center" alt="1" height="380em" width="180em" src="https://github.com/pedro10r/pizza-order/blob/main/src/assets/screenshots/waiter_1.png">
+  <img align="center" alt="1" height="380em" width="180em" src="https://github.com/pedro10r/pizza-order/blob/main/src/assets/screenshots/search.png">
+  <img align="center" alt="1" height="380em" width="180em" src="https://github.com/pedro10r/pizza-order/blob/main/src/assets/screenshots/waiter_2.png">
 </div>
