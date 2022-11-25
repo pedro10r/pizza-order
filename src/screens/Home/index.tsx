@@ -67,11 +67,26 @@ export function Home() {
   }
 
   function handleOpen(id: string) {
-    navigation.navigate('product', { id });
+    navigation.navigate(user?.isAdmin ? 'product' : 'order', { id });
   }
 
   function handleAdd() {
     navigation.navigate('product');
+  }
+
+  function handleSignOut() {
+    return Alert.alert('Pizza Order', 'Deseja realmente sair do aplicativo?', [
+      {
+        text: 'Não',
+        style: 'cancel',
+      },
+      {
+        text: 'Sim',
+        onPress: () => {
+          signOut();
+        },
+      },
+    ]);
   }
 
   useFocusEffect(
@@ -85,10 +100,10 @@ export function Home() {
       <Header>
         <Greeting>
           <GreetingEmoji source={happyPng} />
-          <GreetingText>Olá, Admin</GreetingText>
+          <GreetingText>Olá, {user?.name}</GreetingText>
         </Greeting>
 
-        <TouchableOpacity onPress={signOut}>
+        <TouchableOpacity onPress={handleSignOut}>
           <MaterialIcons name="logout" color={COLORS.TITLE} size={24} />
         </TouchableOpacity>
       </Header>
@@ -113,8 +128,7 @@ export function Home() {
         )}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{
-          paddingTop: 20,
-          paddingBottom: 125,
+          paddingVertical: 20,
           marginHorizontal: 24,
         }}
       />
